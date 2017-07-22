@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  stableStatus = true;
   servers = [
     {
       instanceType: 'medium',
@@ -41,10 +42,11 @@ export class AppComponent {
   }
 
   onAddServer() {
+    this.stableStatus = !this.stableStatus;
     this.servers.push({
       instanceType: 'small',
       name: 'Bi Server',
-      status: 'stable',
+      status: this.stableStatus ? 'stable' : 'offline',
       started: new Date(15, 1, 2017)
     });
 
